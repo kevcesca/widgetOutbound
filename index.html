@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal con Parámetros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .menu-container {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item {
+            transition: opacity 0.2s;
+        }
+
+        .menu-item:hover {
+            opacity: 0.8;
+        }
+    </style>
+    <script>
+        // Recarga la página actual después de 5 segundos
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
+
+        // Listener para recibir datos del widget principal
+        window.addEventListener('message', (event) => {
+            console.log("Evento recibido:", event);
+            const allowedOrigin = 'https://na-01.workspaces.avayacloud.com'; // Cambia el origen si es necesario
+            if (event.origin === allowedOrigin && event.data) {
+                const { queue, nombreAgente } = event.data;
+                console.log("Datos recibidos para queue:", event.data);
+                if (queue) {
+                    // Procesa el valor de queue recibido
+                    console.log("Queue recibida:", queue);
+                    console.log("Nombre del agente recibido:", nombreAgente);
+                    // Aquí puedes usar queue para redirigir o cargar contenido
+                    redirectToQueue(queue);
+                }
+            } else {
+                console.warn("Origen no permitido o datos no válidos recibidos:", event.origin);
+            }
+        });
+
+
+        // Función para redirigir a la URL según el valor de `queue`
+        function redirectToQueue(queue) {
+            if (queue === 'CTAS LN Sears' || queue === 'CTAS LN Sanborns' || queue === 'CTAS LN Mixup' || queue === 'CTAS Especiales' || queue === 'CTAS Especiales 2' || queue === 'CTAS Especiales 3') {
+                queue = 'PROMOCIONES';
+            }
+            if (queue === 'PPMEDICALL DORIANS'||queue === 'PPMEDICALL DORIANS') {
+                queue = 'MEDICALL';
+            }
+            let targetUrl = '';
+            switch (queue) {
+                case 'AUTOTAL':
+                    targetUrl = './queues/outbound/autotal/index.html';
+                    break;
+                case 'AUTOTAL EN LINEA':
+                    targetUrl = './queues/outbound/autotal-linea/autotal.html';
+                    break;
+                case 'BIENESTAR SANBORNS':
+                    targetUrl = './queues/outbound/bienestar/bienestar.html';
+                    break;
+                case 'INBURSA PPS':
+                    targetUrl = './queues/outbound/inbursa-pps/inbursa-pps.html';
+                    break;
+                case 'MEDICALL':
+                    targetUrl = './queues/outbound/medicall-home/medicall-home.html';
+                    break;
+                case 'PROMOCIONES':
+                    targetUrl = './queues/outbound/promociones/promociones.html';
+                    break;
+                default:
+                    console.log('Queue no válida, permaneciendo en la página actual.', queue);
+                    return;
+            }
+            // Redirigir a la URL deseada
+            window.location.href = targetUrl;
+        }
+
+        // Función para redirigir manteniendo los parámetros actuales
+        function redirectWithParams(url) {
+            const params = new URLSearchParams(window.location.search);
+            window.location.href = `${url}?${params.toString()}`;
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="menu-container p-4 p-md-5">
+            <h1 class="text-center mb-5">Campañas Outbound</h1>
+
+            <!-- Botones originales -->
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h2 class="mb-3">Inbound</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <button onclick="redirectWithParams('./queues/inbound/sears/sears.html')"
+                                class="btn btn-warning w-100 menu-item">SEARS</button>
+                        </li>
+                        <li class="mb-2">
+                            <button onclick="redirectWithParams('./queues/inbound/sanborns/sanborns.html')"
+                                class="btn btn-primary w-100 menu-item">Sanborns</button>
+                        </li>
+                        <li class="mb-2">
+                            <button onclick="redirectWithParams('./queues/inbound/mixup/mixup.html')"
+                                class="btn btn-success w-100 menu-item">Mixup</button>
+                        </li>
+                        <li class="mb-2">
+                            <button onclick="redirectWithParams('./queues/inbound/robo/robo.html')"
+                                class="btn btn-danger w-100 menu-item">Robo</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="mb-3">Outbound</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <button onclick="redirectWithParams('./queues/outbound/autotal/index.html')"
+                                class="btn btn-warning w-100 menu-item">Autotal</button>
+                        </li>
+                        <li class="mb-2">
+                            <button onclick="redirectWithParams('./queues/outbound/autotal-linea/autotal.html')"
+                                class="btn btn-primary w-100 menu-item">Autotal en línea</button>
+                        </li>
+                        <li class="mb-2">
+                            <button onclick="redirectWithParams('./queues/outbound/bienestar/bienestar.html')"
+                                class="btn btn-success w-100 menu-item">Bienestar</button>
+                        </li>
+                        <li class="mb-2">
+                            <button onclick="redirectWithParams('./queues/outbound/inbursa-pps/inbursa-pps.html')"
+                                class="btn btn-danger w-100 menu-item">Inbursa PPS</button>
+                        </li>
+                        <li class="mb-2">
+                            <button
+                                onclick="redirectWithParams('./queues/outbound/medicall-home/medicall-home.html')"
+                                class="btn btn-info w-100 menu-item">Medicall</button>
+                        </li>
+                        <li class="mb-2">
+                            <button onclick="redirectWithParams('./queues/outbound/promociones/promociones.html')"
+                                class="btn btn-outline-primary w-100 menu-item">Promociones</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <span><b>v 0.7.7</b></span>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
