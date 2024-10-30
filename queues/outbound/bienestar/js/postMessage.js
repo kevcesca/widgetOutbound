@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttonsWithMotivos = [
         { id: 'agendarCitaBtn', motivo: 'AGEN' },
         { id: 'dejarRecadoBtn', motivo: 'RECF' },
-        { id: 'btnContratar', motivo: 'SACEPA' },
+        { id: 'continuarBtn', motivo: 'SACEPA' },
         
     ];
 

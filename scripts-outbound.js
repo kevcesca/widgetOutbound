@@ -8,7 +8,7 @@ class scriptsOutbound extends HTMLElement {
         this.dataFromInteractionEvent = {};
         this.queue = "Nulo";
         this.nombreAgente = "Nulo";
-        this.motivoTermino = "OKCTE";  // Variable para almacenar el motivo de terminación de la llamada
+        this.motivoTermino = "";  
         this.callEnded = false;
     }
 

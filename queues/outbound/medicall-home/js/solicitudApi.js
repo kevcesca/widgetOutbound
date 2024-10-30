@@ -23,7 +23,7 @@ function enviarSolicitudSeguroMHOME() {
     };
 
     // Enviar la solicitud
-    fetch("https://10.128.14.10:8443/SeguroMHOME/ServiciosSearsVisa/spb_services/seguroMHOME", {
+    fetch("https://searsvisadesa.sears.com.mx:8443/SeguroMHOME/ServiciosSearsVisa/spb_services/seguroMHOME", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

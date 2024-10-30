@@ -14,7 +14,7 @@ function enviarSolicitud() {
     const solicitudBase = {
         nombreServicio: "seguroPPS",
         cuenta: cuenta,
-        usuario: usuario,
+        usuario: usuario || "Nulo",
         tipoSeguro: tipoSeguro,
         tipoCargo: tipoCargo,
         autoriza: "T",
@@ -28,11 +28,11 @@ function enviarSolicitud() {
         apellidoPaternoAse: datosCliente["PATERNO_TIT"],
         apellidoMaternoAse: datosCliente["MATERNO_TIT"],
         fechaNacimientoAse: datosCliente["fec_nac"],
-        fechaAlta: datosCliente["fec_alta"],
+        fechaAlta: fechaHoy,
         folio: document.getElementById('folio1').value,
         fechaTransaccion: fechaHoy,
         horaTransaccion: horaActual,
-        ipOrigen: "10.196.45.80" // Hardcodeada según el ejemplo
+        ipOrigen: "10.196.45.80" 
     };
 
     // Si el plan es "Paquete" o "Paquete Plus", genera una solicitud por cada registro
@@ -42,7 +42,7 @@ function enviarSolicitud() {
 
     // Envía cada solicitud
     solicitudes.forEach(solicitud => {
-        fetch("https://10.128.14.10:8443/SeguroPPS/ServiciosSearsVisa/spb_services/seguroPPS", {
+        fetch("https://searsvisadesa.sears.com.mx:8443/SeguroPPS/ServiciosSearsVisa/spb_services/seguroPPS", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -18,8 +18,8 @@ function cargarDatosFormulario() {
         console.log("Datos recibidos:", window.infoCliente);
         const datos = window.infoCliente;
         // Llenamos los campos del formulario
-        document.getElementById('nombreCliente').value = datos.nombreCliente || 'No Disponible';
-        document.getElementById('noCuenta').value = datos.noCuenta || 'No Disponible';
+        document.getElementById('nombreCliente').value = datos["NOMBRE_TIT"] || 'No Disponible';
+        document.getElementById('noCuentaConf').value = datos.CUENTA || 'No Disponible';
         document.getElementById('noCliente').value = datos.CUENTA || 'No Disponible';
         document.getElementById('central').value = datos.central || 'No Disponible';
         document.getElementById('centralConf').value = datos.central || 'No Disponible';
@@ -41,8 +41,34 @@ function cargarDatosFormulario() {
 
         // Actualizar todos los elementos con clase `nombreCliente`
         document.querySelectorAll('.nombreCliente').forEach(el => {
-            el.textContent = datos["First Name"] || 'Cliente';
+            el.textContent = datos["NOMBRE_TIT"] || 'Cliente';
         });
     }
 }
 
+
+// const data = {
+//     Id: "",
+//     TEL_CASA: "",
+//     TEL_CASA_ctry_code: "",
+//     TEL_CASA_tz: "",
+//     TEL_CASA_state: "",
+//     TEL_CASA_wireless: "",
+//     TEL_CASA_allowedtime: "",
+//     TEL_CASA_disallowedtime: "",
+//     TEL_OFICINA: "",
+//     TEL_OFICINA_ctry_code: "",
+//     TEL_OFICINA_tz: "",
+//     TEL_OFICINA_state: "",
+//     TEL_OFICINA_wireless: "",
+//     TEL_OFICINA_allowedtime: "",
+//     TEL_OFICINA_disallowedtime: "",
+//     CICLO: "",
+//     COMPANIA: "",
+//     CUENTA: "",
+//     ESTADO_CENTRAL: "",
+//     FECHA_ENVIO: "",
+//     MATERN_TIT: "",
+//     NOMBRE_TIT: "",
+//     PATERNO_TIT
+// };
