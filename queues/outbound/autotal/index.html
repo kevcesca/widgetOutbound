@@ -169,9 +169,6 @@
                             </div>
                             <div id="noConoceOptions" class="d-none">
                                 <p class="mb-3"><b>Perdón Sr(a), una disculpa y que tenga buenas tardes</b></p>
-                                <div class="d-flex justify-content-end">
-                                    <button class="btn btn-primary" id="finalizarNoConoceBtn">Finalizar</button>
-                                </div>
                             </div>
                             <div id="dejarRecadoMessage" class="d-none mt-4">
                                 <div class="card">
@@ -183,9 +180,6 @@
                                         <p>Nos encontramos en el 01 800 900 21 23 LADA sin costo para el interior de la
                                             República o en el 52630306 para el D.F. y área metropolitana.</p>
                                         <p>Muchas Gracias Sr(a). Hasta pronto, que tenga una Excelente Tarde</p>
-                                        <div class="d-flex justify-content-end mt-3">
-                                            <button class="btn btn-primary" id="enviarRecadoBtn">finalizar</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -193,15 +187,15 @@
                             <div id="noContactOptions" class="d-none mt-3">
                                 <h5>Motivo de NO CONTACTO</h5>
                                 <select class="form-select dispCode" id="noContactReason">
+                                    <option selected>Seleccione una opción</option>
                                     <option value="NOCT">No Contesta</option>
                                     <option value="NOCA">Contestadora</option>
-                                    <option value="OTRNC">Fax</option>
                                     <option value="FSE">Fuera de Servicio</option>
                                     <option value="OTRNC">Teléfono no existe</option>
                                     <option value="OTRNC">Otros NC</option>
                                 </select>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="button" class="btn btn-primary" id="finalizarBtn">Finalizar</button>
+                                    <button type="button" class="btn btn-primary" id="finalizarBtn">Calificar</button>
                                 </div>
                             </div>
                         </div>
@@ -280,6 +274,14 @@
                             acuerdo a lo indicado por el Cliente.</p>
                         <div id="cotizacionButtons">
                             <p class="font-weight-bold"><b>¿Sr. / Sra. Procedemos a asegurar su vehículo?</b></p>
+                            <div class="col-md-6">
+                                <label for="tipoPago" class="form-label dispCode">Tipo de Pago:</label>
+                                <select class="form-select dispCode" id="tipoPago">
+                                    <option selected>Seleccione una opción</option>
+                                    <option value="SACEPM">MENSUAL</option>
+                                    <option value="SACEPA">ANUAL</option>
+                                </select>
+                            </div>
                             <div class="d-flex justify-content-end mt-3">
                                 <button class="btn btn-success me-2" id="aceptarBtn">Aceptar</button>
                                 <button class="btn btn-danger" id="noAceptaBtn2">No Acepta</button>
@@ -373,12 +375,11 @@
                             <option value="NEC">No cubre mis Necesidades</option>
                             <option value="NOLI">No le interesa</option>
                             <option value="YTS">Ya Tiene Seguro</option>
-                            <!-- <option value="Edad">Edad</option>
-                            <option value="NO ACEPTA SE ENVIO COTIZACION">NO ACEPTA SE ENVIO COTIZACION</option> -->
+                            <option value="Edad">Edad</option>
                             <option value="OTRNA">Otros NA</option>
                         </select>
                         <div class="d-flex justify-content-end mt-3">
-                            <button class="btn btn-primary" id="finalizarNoAceptaBtn">Finalizar</button>
+                            <button class="btn btn-primary" id="finalizarNoAceptaBtn">Calificar</button>
                         </div>
                     </div>
                 </div>
@@ -426,9 +427,6 @@
                             <p>Gracias por recibir nuestra llamada, le atendió <b id="nombreAgenteDespedida">Agente</b>
                                 de Seguros Inbursa.</p>
                         </b>
-                        <div class="d-flex justify-content-end mt-3">
-                            <button type="button" class="btn btn-primary" id="finalizarBtn">Finalizar</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -436,7 +434,7 @@
 
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h2>AUTOTAL</h2>
+                <h2 id="tituloQueue"></h2>
                 <i class="bi bi-telephone-fill ms-2"></i>
             </div>
             <label for="cuentaInput" class="form-label">No. Cuenta:</label>
@@ -452,12 +450,6 @@
                     <i class="bi bi-lightbulb-fill"></i> TIPS
                 </button>
             </div>
-
-            <!-- <input type="text" class="form-control sidebar-input" placeholder="Número telefónico a marcar">
-            <div class="call-actions">
-                <button class="btn btn-success"><i class="bi bi-telephone-fill"></i></button>
-                <button class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-            </div> -->
             <p class="mt-2 text-muted">Sin Promociones</p>
         </aside>
 

@@ -50,6 +50,7 @@ function cargarDatosFormulario() {
         document.getElementById('telefonoCasa').value = datos["TEL_CASA"] || 'No Disponible';
         document.getElementById('telefonoOficina').value = datos["TEL_OFICINA"] || 'No Disponible';
         document.getElementById('cuentaInput').value = datos["CUENTA"] || 'No Disponible';
+        document.getElementById('tituloQueue').textContent = datos["queue"] || 'No Disponible';
         // Llenamos los nombres del agente
         document.getElementById('nombreAgente').textContent = datos.nombreAgente || 'Agente';
         document.getElementById('nombreAgenteDespedida').textContent = datos.nombreAgente || 'Agente';

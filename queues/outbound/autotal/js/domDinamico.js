@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const aceptarAgendaBtn = document.getElementById('aceptarAgendaBtn');
     const finalizarAgendaBtn = document.getElementById('finalizarAgendaBtn');
     const noConoceBtn = document.getElementById('noConoceBtn');
-    const finalizarNoConoceBtn = document.getElementById('finalizarNoConoceBtn');
     const noSeEncuentraBtn = document.getElementById('noSeEncuentraBtn');
+    const tipoPagoSelect = document.getElementById('tipoPago');
 
     // Event Listeners
     contactBtn.addEventListener('click', function () {
@@ -81,11 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
         noConoceOptions.classList.remove('d-none');
     });
 
-    finalizarNoConoceBtn.addEventListener('click', function () {
-        alert('Formulario finalizado. Gracias por su tiempo.');
-        resetForms();
-    });
-
     dejarRecadoBtn.addEventListener('click', function () {
         siConoceOptions.classList.add('d-none');
         dejarRecadoMessage.classList.remove('d-none');
@@ -121,6 +116,19 @@ document.addEventListener('DOMContentLoaded', function () {
         noAceptaForm.classList.remove('d-none');
     });
 
+    // Inicialmente deshabilitar el botón "Aceptar"
+    aceptarBtn.disabled = true;
+
+    // Evento para habilitar el botón cuando se selecciona una opción de tipo de pago
+    tipoPagoSelect.addEventListener('change', function () {
+        // Verifica si se seleccionó una opción distinta a la predeterminada
+        if (tipoPagoSelect.value !== "Seleccione una opción") {
+            aceptarBtn.disabled = false; // Habilita el botón
+        } else {
+            aceptarBtn.disabled = true; // Deshabilita el botón si no hay selección válida
+        }
+    });
+
     aceptarBtn.addEventListener('click', function () {
         cotizacionButtons.classList.add('d-none');
         propietarioQuestion.classList.remove('d-none');
@@ -137,12 +145,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     finalizarNoAceptaBtn.addEventListener('click', function () {
-        alert('Formulario finalizado. Gracias por su tiempo.');
         resetForms();
     });
 
     finalizarBtn.addEventListener('click', function () {
-        alert('Cotización finalizada. Gracias por su tiempo.');
         resetForms();
     });
 
@@ -157,7 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     aceptarAgendaBtn.addEventListener('click', function () {
         // Here you would typically save the scheduling information
-        alert('Agendación guardada. Nos pondremos en contacto en la fecha indicada.');
         resetForms();
     });
 

@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttonsWithMotivos = [
         { id: 'noTiempoBtn', motivo: 'NOTT' },
         { id: 'solicitaProrrogaBtn', motivo: 'AGEN' },
-        { id: 'dejarRecadoBtn', motivo: 'RECF' },
-        { id: 'siPropietarioBtn', motivo: 'SACEPA' },
+        { id: 'dejarRecadoBtn', motivo: 'RECF' }
     ];
 
     // Agregar listeners a cada botón según el motivo asociado
