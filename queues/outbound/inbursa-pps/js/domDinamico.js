@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
         customerDataView.classList.remove('d-none');
     });
 
-    planSelect.addEventListener('change', function() {
+    planSelect.addEventListener('change', function () {
         if (this.value === 'PAQUETE' || this.value === 'PAQUETE PLUS') {
             formularioBeneficiario2.classList.remove('d-none');
         } else {
@@ -99,22 +99,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    agregarBtn.addEventListener('click', function() {
+    // Función para añadir beneficiario al hacer clic en "Agregar"
+    agregarBtn.addEventListener('click', function () {
         const plan = planSelect.value;
         const tipoPago = document.getElementById('tipoPago').value;
         const beneficiarios = [];
 
-        // Collect data for beneficiario 1
+        // Agrega los datos de beneficiario 1
         beneficiarios.push({
             titulo: document.getElementById('titulo1').value,
             nombre: document.getElementById('nombre1').value,
             paterno: document.getElementById('paterno1').value,
             materno: document.getElementById('materno1').value,
             fechaNac: document.getElementById('fechaNac1').value,
-            folio: document.getElementById('folio1').value
+            folio: document.getElementById('folio1').value,
+            plan: plan,
+            tipoPago: tipoPago
         });
 
-        // If it's a package plan, collect data for beneficiario 2
+        // Si el plan es PAQUETE o PAQUETE PLUS, agrega los datos del segundo beneficiario
         if (plan === 'PAQUETE' || plan === 'PAQUETE PLUS') {
             beneficiarios.push({
                 titulo: document.getElementById('titulo2').value,
@@ -122,39 +125,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 paterno: document.getElementById('paterno2').value,
                 materno: document.getElementById('materno2').value,
                 fechaNac: document.getElementById('fechaNac2').value,
-                folio: document.getElementById('folio2').value
+                folio: document.getElementById('folio2').value,
+                plan: '', // Plan vacío para el segundo beneficiario
+                tipoPago: '' // Tipo de pago vacío para el segundo beneficiario
             });
         }
 
-        // Clear existing rows
-        aseguradosTable.innerHTML = '';
-
-        // Add beneficiaries to the table
+        // Añadir cada beneficiario a la tabla
         beneficiarios.forEach((beneficiario, index) => {
             if (beneficiario.nombre && beneficiario.paterno && beneficiario.materno && beneficiario.fechaNac) {
                 const newRow = aseguradosTable.insertRow();
                 newRow.innerHTML = `
-                    <td>${beneficiario.titulo} ${beneficiario.nombre} ${beneficiario.paterno} ${beneficiario.materno}</td>
-                    <td>${beneficiario.fechaNac}</td>
-                    <td>${plan}</td>
-                    <td>${tipoPago}</td>
-                    <td><button class="btn btn-danger btn-sm eliminar">Eliminar</button></td>
-                `;
+                <td>${beneficiario.titulo} ${beneficiario.nombre} ${beneficiario.paterno} ${beneficiario.materno}</td>
+                <td>${beneficiario.fechaNac}</td>
+                <td>${beneficiario.plan}</td>
+                <td>${beneficiario.tipoPago}</td>
+                <td><button class="btn btn-danger btn-sm eliminar">Eliminar</button></td>
+            `;
 
-                // Add event listener to the new "Eliminar" button
-                newRow.querySelector('.eliminar').addEventListener('click', function() {
+                // Event listener para eliminar el beneficiario al hacer clic en "Eliminar"
+                newRow.querySelector('.eliminar').addEventListener('click', function () {
                     aseguradosTable.removeChild(newRow);
                 });
             } else {
                 alert('Por favor, complete todos los campos obligatorios para el beneficiario ' + (index + 1));
             }
         });
+
+        // Actualiza el estado del botón continuar después de agregar beneficiarios
+        actualizarEstadoContinuarBtn();
     });
 
-    document.getElementById('continuarBtn').addEventListener('click', function () {
-        customerDataView.classList.add('d-none');
-        confirmationView.classList.remove('d-none');
+    // Inicialmente desactiva el botón continuar
+    continuarBtn.disabled = true;
 
+    // Función para verificar si hay beneficiarios en la tabla
+    function actualizarEstadoContinuarBtn() {
+        const numeroBeneficiarios = aseguradosTable.rows.length;
+        continuarBtn.disabled = numeroBeneficiarios === 0; // Habilita si hay al menos un beneficiario
+    }
+
+    document.getElementById('continuarBtn').addEventListener('click', function () {
         enviarSolicitud();
     });
 

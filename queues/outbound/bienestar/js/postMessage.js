@@ -19,8 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttonsWithMotivos = [
         { id: 'agendarCitaBtn', motivo: 'AGEN' },
         { id: 'dejarRecadoBtn', motivo: 'RECF' },
-        { id: 'continuarBtn', motivo: 'SACEPA' },
-        
+        { id: 'otroTelefonoBtn', motivo: 'AGEN' },
+        { id: 'noTieneTiempoBtn', motivo: 'AGEN' },
+        { id: 'necesitaPensarlo', motivo: 'AGEN' },
     ];
 
     // Agregar listeners a cada botón según el motivo asociado

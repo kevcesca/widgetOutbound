@@ -94,7 +94,7 @@
 
                     <div id="noContactoOptions" class="m-4 d-none">
                         <label for="motivoNoContacto" class="form-label"><b>Elige motivo NO CONTACTO</b></label>
-                        <select class="form-select" id="motivoNoContacto">
+                        <select class="form-select dispCode" id="motivoNoContacto">
                             <option value="NOFS">Fuera de Servicio</option>
                             <!-- <option value="">Teléfono no existe</option> -->
                             <option value="NOVA">No vive ahí</option>
@@ -126,6 +126,11 @@
                     <li>Número interior.</li>
                     <li>Número exterior.</li>
                 </ul>
+                <select class="form-select dispCode" id="tipoPago">
+                    <option selected>Seleccione una opción</option>
+                    <option value="SACEPM">MENSUAL</option>
+                    <option value="SACEPA">ANUAL</option>
+                </select>
                 <div class="d-flex justify-content-center mt-4">
                     <h5 class="me-3">¿Le Interesa concluir la contratación de su Póliza?</h5>
                     <button type="button" class="btn btn-success me-2" id="btnContratar">CONTRATAR</button>
@@ -165,7 +170,7 @@
 
             <div id="noInteresaView" class="d-none">
                 <h5 class="mt-4 mb-3">Elige motivo por el que NO LE INTERESA</h5>
-                <select class="form-select mb-3" id="motivoNoInteresa">
+                <select class="form-select mb-3 dispCode" id="motivoNoInteresa">
                     <option value="NOLI">Costo elevado</option>
                     <option value="NOLI">Menos beneficios que en otras aseguradoras ( auto sustituto, cobertura por llantas).
                     </option >

@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const rejectionOptions = document.getElementById('rejectionOptions');
     const agregarBtn = document.getElementById('agregarBtn');
     const continuarBtn = document.querySelector('#additionalInfoView .btn-success');
-    const finishBtn = document.getElementById('finishBtn');
     const finishRejectionBtn = document.getElementById('finishRejectionBtn');
     const agendarView = document.getElementById('agendarView');
     const noViveAhiBtn = document.getElementById('noViveAhiBtn');
@@ -61,9 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     finalizarNoContactoBtn.addEventListener('click', function () {
-        alert('No contacto registrado. Gracias por su tiempo.');
-        // Here you can add any final actions for no contact, such as resetting the form or redirecting
-        // location.reload();
+        window.location.href = window.location.href;
     });
 
     otraPersonaBtn.addEventListener('click', function () {
@@ -132,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     rejectBtn.addEventListener('click', function () {
+        insuranceView.classList.add('d-none');
         rejectionOptions.classList.remove('d-none');
     });
 
@@ -141,26 +139,27 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             formularioBeneficiario2.classList.add('d-none');
         }
-        // Clear the table when plan changes
-        aseguradosTable.innerHTML = '';
     });
 
+    // Función para añadir beneficiario al hacer clic en "Agregar"
     agregarBtn.addEventListener('click', function () {
         const plan = planSelect.value;
         const tipoPago = document.getElementById('tipoPago').value;
         const beneficiarios = [];
 
-        // Collect data for beneficiario 1
+        // Agrega los datos de beneficiario 1
         beneficiarios.push({
             titulo: document.getElementById('titulo1').value,
             nombre: document.getElementById('nombre1').value,
             paterno: document.getElementById('paterno1').value,
             materno: document.getElementById('materno1').value,
             fechaNac: document.getElementById('fechaNac1').value,
-            folio: document.getElementById('folio1').value
+            folio: document.getElementById('folio1').value,
+            plan: plan,
+            tipoPago: tipoPago
         });
 
-        // If it's a package plan, collect data for beneficiario 2
+        // Si el plan es PAQUETE o PAQUETE PLUS, agrega los datos del segundo beneficiario
         if (plan === 'PAQUETE' || plan === 'PAQUETE PLUS') {
             beneficiarios.push({
                 titulo: document.getElementById('titulo2').value,
@@ -168,26 +167,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 paterno: document.getElementById('paterno2').value,
                 materno: document.getElementById('materno2').value,
                 fechaNac: document.getElementById('fechaNac2').value,
-                folio: document.getElementById('folio2').value
+                folio: document.getElementById('folio2').value,
+                plan: '', // Plan vacío para el segundo beneficiario
+                tipoPago: '' // Tipo de pago vacío para el segundo beneficiario
             });
         }
 
-        // Clear existing rows
-        aseguradosTable.innerHTML = '';
-
-        // Add beneficiaries to the table
+        // Añadir cada beneficiario a la tabla
         beneficiarios.forEach((beneficiario, index) => {
             if (beneficiario.nombre && beneficiario.paterno && beneficiario.materno && beneficiario.fechaNac) {
                 const newRow = aseguradosTable.insertRow();
                 newRow.innerHTML = `
-                    <td>${beneficiario.titulo} ${beneficiario.nombre} ${beneficiario.paterno} ${beneficiario.materno}</td>
-                    <td>${beneficiario.fechaNac}</td>
-                    <td>${plan}</td>
-                    <td>${tipoPago}</td>
-                    <td><button class="btn btn-danger btn-sm eliminar">Eliminar</button></td>
-                `;
+                <td>${beneficiario.titulo} ${beneficiario.nombre} ${beneficiario.paterno} ${beneficiario.materno}</td>
+                <td>${beneficiario.fechaNac}</td>
+                <td>${beneficiario.plan}</td>
+                <td>${beneficiario.tipoPago}</td>
+                <td><button class="btn btn-danger btn-sm eliminar">Eliminar</button></td>
+            `;
 
-                // Add event listener to the new "Eliminar" button
+                // Event listener para eliminar el beneficiario al hacer clic en "Eliminar"
                 newRow.querySelector('.eliminar').addEventListener('click', function () {
                     aseguradosTable.removeChild(newRow);
                 });
@@ -195,7 +193,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Por favor, complete todos los campos obligatorios para el beneficiario ' + (index + 1));
             }
         });
+
+        // Actualiza el estado del botón continuar después de agregar beneficiarios
+        actualizarEstadoContinuarBtn();
     });
+
+    // Inicialmente desactiva el botón continuar
+    continuarBtn.disabled = true;
+
+    // Función para verificar si hay beneficiarios en la tabla
+    function actualizarEstadoContinuarBtn() {
+        const numeroBeneficiarios = aseguradosTable.rows.length;
+        continuarBtn.disabled = numeroBeneficiarios === 0; // Habilita si hay al menos un beneficiario
+    }
 
     continuarBtn.addEventListener('click', showConfirmationView);
 
@@ -204,14 +214,8 @@ document.addEventListener('DOMContentLoaded', function () {
         confirmationView.classList.remove('d-none');
     }
 
-    finishBtn.addEventListener('click', function () {
-        alert('Proceso finalizado. Gracias por su tiempo.');
-    });
-
     finishRejectionBtn.addEventListener('click', function () {
-        alert('Rechazo registrado. Gracias por su tiempo.');
-        // Here you can add any final actions for rejection, such as resetting the form or redirecting
-        // location.reload();
+        window.location.href = window.location.href;
     });
 
     // Evento para regresar a la página inicial

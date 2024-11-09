@@ -69,8 +69,7 @@
                             <div class="row mb-3">
                                 <div class="col">
                                     <label for="direccion" class="form-label">Dirección:</label>
-                                    <input type="text" class="form-control" id="direccion" value=""
-                                        readonly>
+                                    <input type="text" class="form-control" id="direccion" value="" readonly>
                                 </div>
                                 <div class="col">
                                     <label for="colonia" class="form-label">Colonia:</label>
@@ -97,13 +96,11 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="tel-oficina" class="form-label">Tel. Oficina:</label>
-                                    <input type="text" class="form-control" id="tel-oficina" value=""
-                                        readonly>
+                                    <input type="text" class="form-control" id="tel-oficina" value="" readonly>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="tel-celular" class="form-label">Tel. C/Ref:</label>
-                                    <input type="text" class="form-control" id="tel-cRef" value=""
-                                        readonly>
+                                    <input type="text" class="form-control" id="tel-cRef" value="" readonly>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="tel-o" class="form-label">Tel. O/Ref:</label>
@@ -146,16 +143,16 @@
                             <div id="noContactView" class="d-none mt-4">
                                 <h4 class="mb-3">Motivo de NO CONTACTO</h4>
                                 <select class="form-select mb-3 dispCode" id="noContactReason">
+                                    <option selected>Seleccione una opción</option>
                                     <option value="NOCT">No Contesta</option>
                                     <option value="NOCA">Contestadora</option>
-                                    <option value="OTRNC">Fax</option>
                                     <option value="FSE">Fuera de Servicio</option>
                                     <option value="OTRNC">Teléfono no existe</option>
                                     <option value="OTRNC">Otros NC</option>
                                 </select>
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="button" class="btn btn-primary"
-                                        id="finalizarNoContactoBtn">Finalizar</button>
+                                        id="finalizarNoContactoBtn">Evaluar</button>
                                 </div>
                             </div>
 
@@ -189,9 +186,6 @@
                                 <div class="alert alert-info" role="alert">
                                     <p>Perdón Sr(a)., una disculpa y que tenga una Excelente Tarde</p>
                                 </div>
-                                <div class="d-flex justify-content-end mt-3">
-                                    <button type="button" class="btn btn-primary" id="finalizarBtn">Finalizar</button>
-                                </div>
                             </div>
 
                             <div id="dejarRecadoView" class="d-none mt-4">
@@ -204,9 +198,6 @@
                                         en el 52630306 para el D.F. y área metropolitana.</p>
                                     <p>Muchas Gracias Sr(a). Hasta pronto, que tenga una Excelente Tarde</p>
                                 </div>
-                                <div class="d-flex justify-content-end mt-3">
-                                    <button type="button" class="btn btn-primary" id="finalizarBtn">Finalizar</button>
-                                </div>
                             </div>
                         </form>
                     </div>
@@ -214,68 +205,8 @@
             </div>
 
             <div id="agendarView" class="container d-none my-4">
-                <h4 class="mb-3">Agendación</h4>
-                <!-- Table for Ciclo, Cuenta, Fecha -->
-                <table class="table table-bordered mb-3">
-                    <thead>
-                        <tr>
-                            <th>Ciclo</th>
-                            <th>Cuenta</th>
-                            <th>Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="infoRow">
-                            <td id="cicloValue"></td>
-                            <td id="cuentaValue"></td>
-                            <td id="fechaValue"></td>
-                        </tr>
-                        <tr id="noInfoRow" class="d-none">
-                            <td colspan="3" class="text-center">Sin información</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- Número telefónico and Tipo teléfono -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="numeroTelefonico" class="form-label">Número telefónico:</label>
-                        <input type="tel" class="form-control" id="numeroTelefonico">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Tipo teléfono:</label>
-                        <div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="tipoTelefono" id="telCasa"
-                                    value="casa">
-                                <label class="form-check-label" for="telCasa">TelCasa</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="tipoTelefono" id="telOficina"
-                                    value="oficina">
-                                <label class="form-check-label" for="telOficina">TelOficina</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Agendar field -->
-                <div class="mb-3">
-                    <label for="agendar" class="form-label">Agendar:</label>
-                    <input type="datetime-local" class="form-control" id="agendar">
-                </div>
-                <!-- Checkboxes -->
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="agendarParaNajera">
-                    <label class="form-check-label" for="agendarParaNajera">¿Agendar para NAJERA?</label>
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="reemplazarTelefono">
-                    <label class="form-check-label" for="reemplazarTelefono">¿Reemplazar teléfono
-                        actual?</label>
-                </div>
-                <!-- Buttons -->
-                <div class="d-flex justify-content-end mt-3">
-                    <button type="button" class="btn btn-success me-2" id="agendarBtn">Agendar</button>
-                    <button type="button" class="btn btn-secondary" id="finalizarBtn">Finalizar</button>
+                <div class="alert alert-info">
+                    <p><strong>Instrucciones:</strong> Para agendar una llamada, dirígete a la pestaña <em>"Custom"</em> en la parte superior de la interfaz y selecciona la opción <em>"Callback"</em>. Asegúrate de llenar todos los campos necesarios, como el número de teléfono, la fecha y hora de inicio, y la fecha y hora de expiración del callback.</p>
                 </div>
             </div>
 
@@ -303,11 +234,6 @@
                             sobre
                             alguna cobertura en especial?</p>
                         <div class="mb-3">
-                            <!-- <label for="coverageInfo" class="form-label">Información de Coberturas del Seguro:</label>
-                            <select class="form-select" id="coverageInfo">
-                                <option selected>Seleccione una opción</option> -->
-                            <!-- Add more options here -->
-                            <!-- </select> -->
                         </div>
                         <div class="mb-3">
                             <label for="authorizer" class="form-label">Persona que lo autoriza:</label>
@@ -318,173 +244,177 @@
                         <div class="d-flex justify-content-end mt-3">
                             <button type="button" class="btn btn-success me-2" id="acceptBtn">Acepta</button>
                             <button type="button" class="btn btn-danger me-2" id="rejectBtn">No Acepta</button>
-                            <button type="button" class="btn btn-primary" id="necesitaPensarlo">Necesita
-                                Pensarlo</button>
-                        </div>
-                        <div id="rejectionOptions" class="mt-4 d-none">
-                            <h6>Motivo por el cual el cliente No Acepta el seguro</h6>
-                            <select class="form-select" id="rejectionReason">
-                                <option selected>Seleccione una opción</option>
-                                <option value="costo">Costo</option>
-                                <option value="no-cubre-necesidades">No cubre sus Necesidades</option>
-                                <option value="no-interesa">No le interesa</option>
-                                <option value="ya-tiene-seguro">Ya Tiene Seguro</option>
-                                <option value="edad">Edad</option>
-                                <option value="no-acepta-cotizacion">NO ACEPTA SE ENVIO COTIZACION</option>
-                                <option value="otros">Otros NA</option>
-                            </select>
-                            <div class="d-flex justify-content-end mt-3">
-                                <button type="button" class="btn btn-primary" id="finishRejectionBtn">Finalizar</button>
-                            </div>
+                            <button type="button" class="btn btn-primary" id="necesitaPensarlo">Necesita Pensarlo</button>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div id="rejectionOptions" class="mt-4 d-none">
+                <h6>Motivo por el cual el cliente No Acepta el seguro</h6>
+                <select class="form-select dispCode" id="rejectionReason">
+                    <option selected>Seleccione una opción</option>
+                    <option value="CTO">Costo</option>
+                    <option value="NEC">No cubre sus Necesidades</option>
+                    <option value="NOLI">No le interesa</option>
+                    <option value="YTS">Ya Tiene Seguro</option>
+                    <option value="edad">Edad</option>
+                    <option value="no-acepta-cotizacion">NO ACEPTA SE ENVIO COTIZACION</option>
+                    <option value="otros">Otros NA</option>
+                </select>
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="button" class="btn btn-primary" id="finishRejectionBtn">Evaluar</button>
                 </div>
             </div>
 
             <div id="additionalInfoView" class="container my-5 d-none">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Sr./Srita <b class="nombreCliente">Cliente</b> podría darme sus datos para
+                        <h5 class="card-title">Sr./Srita <b class="nombreCliente">Cliente</b> podría darme sus datos
+                            para
                             efectuar
                             el alta por favor?</h5>
-                            <form id="customerForm">
-                                <div class="row mb-3">
-                                    <div class="col-md-3">
-                                        <label for="ci" class="form-label">Ciclo:</label>
-                                        <input type="text" class="form-control" id="ci" value="" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="cuenta" class="form-label">Cuenta:</label>
-                                        <input type="text" class="form-control" id="cuentaConf" value="NoDisponible" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="rfc" class="form-label">RFC:</label>
-                                        <input type="text" class="form-control" id="rfcconf" value="NoDisponible" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="telefono" class="form-label">Teléfono:</label>
-                                        <input type="text" class="form-control" id="telefonoCasaconf" value="NoDisponible" readonly>
-                                    </div>
+                        <form id="customerForm">
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="ci" class="form-label">Ciclo:</label>
+                                    <input type="text" class="form-control" id="ci" value="" readonly>
                                 </div>
-    
-                                <div class="row mb-3">
-                                    <div class="col-md-4">
-                                        <label for="nombre" class="form-label">Nombre Titular:</label>
-                                        <input type="text" class="form-control" id="nombreconf" value="" readonly>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="paterno" class="form-label">Paterno:</label>
-                                        <input type="text" class="form-control" id="paternoconf" value="" readonly>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="materno" class="form-label">Materno:</label>
-                                        <input type="text" class="form-control" id="maternoconf" value="" readonly>
-                                    </div>
+                                <div class="col-md-3">
+                                    <label for="cuenta" class="form-label">Cuenta:</label>
+                                    <input type="text" class="form-control" id="cuentaConf" value="NoDisponible"
+                                        readonly>
                                 </div>
-    
-                                <div class="mb-3">
-                                    <h6>Asegurados</h6>
-                                    <table class="table table-bordered" id="aseguradosTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Asegurados</th>
-                                                <th>Nacimiento</th>
-                                                <th>Plan</th>
-                                                <th>Tipo de Pago</th>
-                                                <th>Eliminar</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Existing entries will be added here -->
-                                        </tbody>
-                                    </table>
+                                <div class="col-md-3">
+                                    <label for="rfc" class="form-label">RFC:</label>
+                                    <input type="text" class="form-control" id="rfcconf" value="NoDisponible" readonly>
                                 </div>
-                                <div id="formularioBeneficiario1" class="row mb-3">
-                                    <div class="col-md-2">
-                                        <label for="titulo1" class="form-label">Título:</label>
-                                        <select class="form-select" id="titulo1">
-                                            <option value="SR">SR</option>
-                                            <option value="SRA">SRA</option>
-                                            <option value="SRITA">SRITA</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="nombre1" class="form-label">Nombre:</label>
-                                        <input type="text" class="form-control" id="nombre1">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="paterno1" class="form-label">Paterno:</label>
-                                        <input type="text" class="form-control" id="paterno1">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="materno1" class="form-label">Materno:</label>
-                                        <input type="text" class="form-control" id="materno1">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="fechaNac1" class="form-label">Fecha Nac:</label>
-                                        <input type="date" class="form-control" id="fechaNac1">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="folio1" class="form-label">Folio:</label>
-                                        <input type="text" class="form-control" id="folio1">
-                                    </div>
+                                <div class="col-md-3">
+                                    <label for="telefono" class="form-label">Teléfono:</label>
+                                    <input type="text" class="form-control" id="telefonoCasaconf" value="NoDisponible"
+                                        readonly>
                                 </div>
-    
-                                <div id="formularioBeneficiario2" class="row mb-3 d-none">
-                                    <div class="col-md-2">
-                                        <label for="titulo2" class="form-label">Título:</label>
-                                        <select class="form-select" id="titulo2">
-                                            <option value="SR">SR</option>
-                                            <option value="SRA">SRA</option>
-                                            <option value="SRITA">SRITA</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="nombre2" class="form-label">Nombre:</label>
-                                        <input type="text" class="form-control" id="nombre2">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="paterno2" class="form-label">Paterno:</label>
-                                        <input type="text" class="form-control" id="paterno2">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="materno2" class="form-label">Materno:</label>
-                                        <input type="text" class="form-control" id="materno2">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="fechaNac2" class="form-label">Fecha Nac:</label>
-                                        <input type="date" class="form-control" id="fechaNac2">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="folio2" class="form-label">Folio:</label>
-                                        <input type="text" class="form-control" id="folio2">
-                                    </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="nombre" class="form-label">Nombre Titular:</label>
+                                    <input type="text" class="form-control" id="nombreconf" value="" readonly>
                                 </div>
-    
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="tipoPago" class="form-label">Tipo de Pago:</label>
-                                        <select class="form-select" id="tipoPago">
-                                            <option value="MENSUAL" selected>MENSUAL</option>
-                                            <option value="ANUAL">ANUAL</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="plan" class="form-label">Plan:</label>
-                                        <select class="form-select" id="plan">
-                                            <option value="INDIVIDUAL" selected>INDIVIDUAL</option>
-                                            <option value="PAQUETE">PAQUETE</option>
-                                            <option value="INDIVIDUAL PLUS">INDIVIDUAL PLUS</option>
-                                            <option value="PAQUETE PLUS">PAQUETE PLUS</option>
-                                        </select>
-                                    </div>
+                                <div class="col-md-4">
+                                    <label for="paterno" class="form-label">Paterno:</label>
+                                    <input type="text" class="form-control" id="paternoconf" value="" readonly>
                                 </div>
-    
-                                <div class="d-flex justify-content-end mt-4">
-                                    <button type="button" class="btn btn-primary me-2" id="agregarBtn">Agregar</button>
-                                    <button type="button" class="btn btn-success" id="continuarBtn">Continuar</button>
+                                <div class="col-md-4">
+                                    <label for="materno" class="form-label">Materno:</label>
+                                    <input type="text" class="form-control" id="maternoconf" value="" readonly>
                                 </div>
-                            </form>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6>Asegurados</h6>
+                                <table class="table table-bordered" id="aseguradosTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Asegurados</th>
+                                            <th>Nacimiento</th>
+                                            <th>Plan</th>
+                                            <th>Tipo de Pago</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Existing entries will be added here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="formularioBeneficiario1" class="row mb-3">
+                                <div class="col-md-2">
+                                    <label for="titulo1" class="form-label">Título:</label>
+                                    <select class="form-select" id="titulo1">
+                                        <option value="SR">SR</option>
+                                        <option value="SRA">SRA</option>
+                                        <option value="SRITA">SRITA</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="nombre1" class="form-label">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre1">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="paterno1" class="form-label">Paterno:</label>
+                                    <input type="text" class="form-control" id="paterno1">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="materno1" class="form-label">Materno:</label>
+                                    <input type="text" class="form-control" id="materno1">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="fechaNac1" class="form-label">Fecha Nac:</label>
+                                    <input type="date" class="form-control" id="fechaNac1">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="folio1" class="form-label">Folio:</label>
+                                    <input type="text" class="form-control" id="folio1">
+                                </div>
+                            </div>
+
+                            <div id="formularioBeneficiario2" class="row mb-3 d-none">
+                                <div class="col-md-2">
+                                    <label for="titulo2" class="form-label">Título:</label>
+                                    <select class="form-select" id="titulo2">
+                                        <option value="SR">SR</option>
+                                        <option value="SRA">SRA</option>
+                                        <option value="SRITA">SRITA</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="nombre2" class="form-label">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre2">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="paterno2" class="form-label">Paterno:</label>
+                                    <input type="text" class="form-control" id="paterno2">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="materno2" class="form-label">Materno:</label>
+                                    <input type="text" class="form-control" id="materno2">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="fechaNac2" class="form-label">Fecha Nac:</label>
+                                    <input type="date" class="form-control" id="fechaNac2">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="folio2" class="form-label">Folio:</label>
+                                    <input type="text" class="form-control" id="folio2">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="tipoPago" class="form-label">Tipo de Pago:</label>
+                                    <select class="form-select dispCode" id="tipoPago">
+                                        <option selected>Seleccione una opción</option>
+                                        <option value="SACEPM">MENSUAL</option>
+                                        <option value="SACEPA">ANUAL</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="plan" class="form-label">Plan:</label>
+                                    <select class="form-select" id="plan">
+                                        <option value="INDIVIDUAL" selected>INDIVIDUAL</option>
+                                        <option value="PAQUETE">PAQUETE</option>
+                                        <option value="INDIVIDUAL PLUS">INDIVIDUAL PLUS</option>
+                                        <option value="PAQUETE PLUS">PAQUETE PLUS</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4">
+                                <button type="button" class="btn btn-primary me-2" id="agregarBtn">Agregar</button>
+                                <button type="button" class="btn btn-success" id="continuarBtn">Continuar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -492,7 +422,8 @@
             <div id="confirmationView" class="container my-5 d-none">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Sr(a) <b class="nombreCliente">Cliente</b>, lo felicito por la decisión que acaba
+                        <h5 class="card-title">Sr(a) <b class="nombreCliente">Cliente</b>, lo felicito por la decisión
+                            que acaba
                             de
                             tomar, usted está asegurado a partir de este momento.</h5>
                         <p>Para hacer uso de las coberturas de Emergencias Médicas, Servicios Funerarios y Asistencia
@@ -501,9 +432,6 @@
                             accidental ,
                             diríjase a la oficina de Seguros Inbursa más cercana.</p>
                         <p>Gracias por recibir nuestra llamada, le atendió <b id="nombreAgenteDespedida">Agente</b>.</p>
-                        <div class="d-flex justify-content-end mt-3">
-                            <button type="button" class="btn btn-primary" id="finishBtn">Finalizar</button>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 function enviarSolicitud() {
+    alert("Procesando solicitud. Por favor, espere...");
     // Obtén valores del formulario y `window.infoCliente`
     const datosCliente = window.infoCliente || {};
     const cuenta = datosCliente["CUENTA"];
@@ -49,9 +50,25 @@ function enviarSolicitud() {
             },
             body: JSON.stringify(solicitud)
         })
-        .then(response => response.json())
-        .then(data => console.log("Solicitud enviada con éxito:", data))
-        .catch(error => console.error("Error al enviar la solicitud:", error));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor: ${response.status} - ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.error) {
+                throw new Error(`Error en la solicitud: ${data.error}`);
+            }
+            console.log("Solicitud enviada con éxito:", data);
+            alert("Solicitud enviada con éxito.");
+            customerDataView.classList.add('d-none');
+            confirmationView.classList.remove('d-none');
+        })
+        .catch(error => {
+            console.error("Error al enviar la solicitud:", error);
+            alert("Hubo un problema al enviar la solicitud: " + error.message + ". Inténtelo de nuevo más tarde.");
+        });
     });
 }
 
